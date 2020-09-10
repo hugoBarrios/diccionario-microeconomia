@@ -1,13 +1,14 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore'
-const firebaseConfig = {
-    apiKey: "AIzaSyDXd1QOuqGTZrX0hQPxvVdJQ-FfQWvHM8E",
-    authDomain: "testfirebase-32330.firebaseapp.com",
-    databaseURL: "https://testfirebase-32330.firebaseio.com",
-    projectId: "testfirebase-32330",
-    storageBucket: "testfirebase-32330.appspot.com",
-    messagingSenderId: "524528985243",
-    appId: "1:524528985243:web:4d0c7146781a538b0b523e"
+var firebaseConfig = {
+    apiKey: "AIzaSyAU09kSWFvnivS6-yU3dZv3-WmbmX1aeWE",
+    authDomain: "diccionario-microeconomia.firebaseapp.com",
+    databaseURL: "https://diccionario-microeconomia.firebaseio.com",
+    projectId: "diccionario-microeconomia",
+    storageBucket: "diccionario-microeconomia.appspot.com",
+    messagingSenderId: "558696089850",
+    appId: "1:558696089850:web:7e578bd45891c571e6a143",
+    measurementId: "G-LRBRCLVMZQ"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);

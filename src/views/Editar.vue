@@ -1,9 +1,9 @@
 <template>
   <div>
       <h1>Editar</h1>
-      {{ tarea.id }} - {{ tarea.nombre}}
-      <form @submit.prevent="editarTarea(tarea)">
-          <input type="text" v-model="tarea.nombre">
+      {{ palabra.id }} - {{ palabra.nombre}}
+      <form @submit.prevent="editarpalabra(palabra)">
+          <input type="text" v-model="palabra.nombre">
           <button type="submit">Editar</button>
       </form>
   </div>
@@ -20,14 +20,14 @@ export default {
         }
     },
     created(){
-       this.getTarea(this.id)
+       this.getpalabra(this.id)
     },
     methods:{
-        ...mapActions(['getTarea', 'editarTarea']),
+        ...mapActions(['getpalabra', 'editarpalabra']),
         
     },
     computed:{
-        ...mapState(['tarea'])
+        ...mapState(['palabra'])
     }
 }
 </script>

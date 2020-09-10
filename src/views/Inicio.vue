@@ -5,7 +5,7 @@
     <button>Agregar</button>
     </router-link>|
     <ul>
-        <li v-for="(tarea, index) in tareas" :key="index">{{ tarea.nombre}} - {{ tarea.id}} <router-link :to="{name:'Editar', params: {id: tarea.id}}"><button>Editar</button></router-link><button @click="eliminarTarea(tarea.id)">Eliminar</button></li>
+        <li v-for="(palabra, index) in palabras" :key="index">{{ palabra.nombre}} - {{ palabra.contenido}} <router-link :to="{name:'Editar', params: {id: palabra.id}}"><button>Editar</button></router-link><button @click="eliminarpalabra(palabra.id)">Eliminar</button></li>
     </ul>
 </div>
 </template>
@@ -15,13 +15,13 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: 'Inicio',
     created(){
-        this.getTareas()
+        this.getpalabras()
     },
     methods:{
-        ...mapActions(['getTareas', 'eliminarTarea'])
+        ...mapActions(['getpalabras', 'eliminarpalabra'])
     },
     computed:{
-        ...mapState(['tareas'])
+        ...mapState(['palabras'])
     }
 }
 </script>

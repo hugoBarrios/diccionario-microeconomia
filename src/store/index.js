@@ -8,64 +8,64 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 state: {
-    tareas: [],
-    tarea: {nombre: '', id: ''}
+    palabras: [],
+    palabra: {nombre: '', id: '', contenido: ''}
 },
 mutations: {
-    setTareas(state, payload){
-        state.tareas = payload
+    setpalabras(state, payload){
+        state.palabras = payload
     },
-    setTarea(state, payload){
-      state.tarea = payload
+    setpalabra(state, payload){
+      state.palabra = payload
     },
-    setElminarTareas(state, payload){
-      state.tareas = state.tareas.filter(item => item.id !== payload)
+    setElminarpalabras(state, payload){
+      state.palabras = state.palabras.filter(item => item.id !== payload)
     }
 },
 actions: {
-    getTarea({commit}, idTarea){
-      db.collection('tareas').doc(idTarea).get()
+    getpalabra({commit}, idpalabra){
+      db.collection('palabras').doc(idpalabra).get()
       .then(doc =>{
         console.log(doc.id);
         console.log(doc.data)
-        let tarea = doc.data()
-        tarea.id = doc.id
-        commit('setTarea', tarea)
+        let palabra = doc.data()
+        palabra.id = doc.id
+        commit('setpalabra', palabra)
       })
     },
-    getTareas({commit}){
-        const tareas = []
-        db.collection('tareas').get()
+    getpalabras({commit}){
+        const palabras = []
+        db.collection('palabras').get()
         .then(res => {
             res.forEach(doc => {
-                //console.log(doc.id)
+                console.log(doc.data())
                 //console.log(doc.data())
-                let tarea = doc.data()
-                tarea.id = doc.id
-                tareas.push(tarea)
+                let palabra = doc.data()
+                palabra.id = doc.id
+                palabras.push(palabra)
             })
-            commit('setTareas', tareas)
+            commit('setpalabras', palabras)
         })
     },
-    editarTarea(context,tarea){
-      //console.log(tarea.id);
-      db.collection('tareas').doc(tarea.id).update({
-        nombre: tarea.nombre
+    editarpalabra(context,palabra){
+      //console.log(palabra.id);
+      db.collection('palabras').doc(palabra.id).update({
+        nombre: palabra.nombre
       }).then(()=> {
         Router.push('/')
       })
     },
-    agregarTarea(context, nombreTarea){
-      db.collection('tareas').add({nombre: nombreTarea})
+    agregarpalabra(context, nombrepalabra){
+      db.collection('palabras').add({nombre: nombrepalabra})
       .then(() =>{
           router.push('/')
       })
     },
-    eliminarTarea({commit}, id){
-      db.collection('tareas').doc(id).delete()
+    eliminarpalabra({commit}, id){
+      db.collection('palabras').doc(id).delete()
       .then(() => {
-        console.log('tarea eliminada');
-        commit('setElminarTareas', id)
+        console.log('palabra eliminada');
+        commit('setElminarpalabras', id)
       })
     }
 },

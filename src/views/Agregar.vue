@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Agregar tarea</h1>
-        <form @submit.prevent="agregarTarea(nombre)">
+        <h1>Agregar palabra</h1>
+        <form @submit.prevent="agregarpalabra(nombre)">
             <input type="text" v-model="nombre">
             <button type="submit">Agregar</button>
         </form>
@@ -18,7 +18,7 @@ export default {
         }
     },
     methods:{
-        ...mapActions(['agregarTarea'])
+        ...mapActions(['agregarpalabra'])
     }
 }
 </script>
