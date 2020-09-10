@@ -1,11 +1,17 @@
 <template>
   <div>
-      <h1>Editar</h1>
-      {{ palabra.nombre }} - {{ palabra.contenido}}
+      <router-link :to="{name:'Inicio'}">
+        <b-button variant="danger">Volver</b-button>
+    </router-link>
+      <h1>Editar palabra</h1>
       <form @submit.prevent="editarpalabra(palabra)">
-          <input type="text" v-model="palabra.nombre">
-          <input type="text" v-model="palabra.contenido">
-          <button type="submit">Editar</button>
+          <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" v-model="palabra.nombre" class="form-control">
+            <label>Definicion</label>
+            <textarea v-model="palabra.contenido" class="form-control"></textarea>
+          </div>
+            <button :disabled="palabra.nombre === '' || palabra.contenido === ''" type="submit" class="btn btn-primary btn-block">Editar</button>
       </form>
   </div>
 </template>
