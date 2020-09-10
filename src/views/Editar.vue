@@ -1,9 +1,10 @@
 <template>
   <div>
       <h1>Editar</h1>
-      {{ palabra.id }} - {{ palabra.nombre}}
+      {{ palabra.nombre }} - {{ palabra.contenido}}
       <form @submit.prevent="editarpalabra(palabra)">
           <input type="text" v-model="palabra.nombre">
+          <input type="text" v-model="palabra.contenido">
           <button type="submit">Editar</button>
       </form>
   </div>

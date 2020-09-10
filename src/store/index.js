@@ -9,7 +9,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 state: {
     palabras: [],
-    palabra: {nombre: '', id: '', contenido: ''}
+    palabra: {nombre: '', id: '', contenido: ''},
+    texto: ''
 },
 mutations: {
     setpalabras(state, payload){
@@ -23,6 +24,10 @@ mutations: {
     }
 },
 actions: {
+    buscador({state}, payload){
+      console.log(payload);
+      state.texto = payload.toLowerCase();
+    },
     getpalabra({commit}, idpalabra){
       db.collection('palabras').doc(idpalabra).get()
       .then(doc =>{
@@ -38,7 +43,7 @@ actions: {
         db.collection('palabras').get()
         .then(res => {
             res.forEach(doc => {
-                console.log(doc.data())
+                //console.log(doc.data())
                 //console.log(doc.data())
                 let palabra = doc.data()
                 palabra.id = doc.id
@@ -50,13 +55,14 @@ actions: {
     editarpalabra(context,palabra){
       //console.log(palabra.id);
       db.collection('palabras').doc(palabra.id).update({
-        nombre: palabra.nombre
+        nombre: palabra.nombre,
+        contenido: palabra.contenido
       }).then(()=> {
         Router.push('/')
       })
     },
-    agregarpalabra(context, nombrepalabra){
-      db.collection('palabras').add({nombre: nombrepalabra})
+    agregarpalabra(context, params){
+      db.collection('palabras').add({nombre: params.nombre, contenido: params.contenido})
       .then(() =>{
           router.push('/')
       })
@@ -69,6 +75,18 @@ actions: {
       })
     }
 },
-  modules: {
+modules: {
+  },
+getters:{
+  arrayFiltrado(state){
+    let arregloFiltrado = []
+    for(let palabra of state.palabras){
+      let nombre = palabra.nombre.toLowerCase();
+      if(nombre.indexOf(state.texto) >= 0){
+        arregloFiltrado.push(palabra)
+      }
+    }
+    return arregloFiltrado;
   }
+}
 })
