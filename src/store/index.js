@@ -14,7 +14,18 @@ state: {
 },
 mutations: {
     setpalabras(state, payload){
-        state.palabras = payload
+      payload.sort(function(a, b) {
+        var nameA = a.nombre.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.nombre.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      })
+      state.palabras = payload
     },
     setpalabra(state, payload){
       state.palabra = payload
@@ -49,6 +60,7 @@ actions: {
                 palabra.id = doc.id
                 palabras.push(palabra)
             })
+            
             commit('setpalabras', palabras)
         })
     },
