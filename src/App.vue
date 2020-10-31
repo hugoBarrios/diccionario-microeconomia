@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <b-container-fluid>
+      <div class="card">
+            <div class="card-body ">
+              <h1 class="h6" id="main-title">desarrollado con el ❤ por: 🐍 Luis Eduardo Jeréz Girón - 1990-19-6340  ||  🦢 Hugo Ernesto Barrios Rosales - 1990-19-6344 || 🐱 Fernan Emilio Rixquiacche Perez - 1990-19-5454</h1>
+            </div>
+      </div>
+    </b-container-fluid>
     <b-container>
         <b-row class="pt-5" align-h="center">
           <b-col cols="12" md="8">
