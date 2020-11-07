@@ -1,24 +1,21 @@
-# diccionario-microeconomia
+# Calculadora Estadística
 
-## Project setup
-```
-npm install
-```
+## Integrantes del grupo
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- 🐍 Luis Eduardo Jeréz Girón - 1990-19-6340
+- 🦢 Fernan Emilio Rixquiacche Perez - 1990-19-5454
+- 🐱 Hugo Ernesto Barrios Rosales - 1990-19-6344
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Requisitos
 
-### Lints and fixes files
-```
-npm run lint
-```
+- NodeJS
+- NPM o YARN para la gestión de paquetes
+- Mucha creatividad
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Construcción del proyecto
+
+Una vez desgargado el código fuente se deben instalar todas las dependencias con `npm install` o `yarn install`
+
+Modo desarrollo: `npm run serve` o `yarn serve`
+
+Construir para producción: `npm run build` o `yarn build`
